@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Specialisation__c</fullName>
+    <externalId>false</externalId>
+    <label>Specialisation</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>-</fullName>
+                <default>false</default>
+                <label>-</label>
+            </value>
+            <value>
+                <fullName>Dekanat</fullName>
+                <default>false</default>
+                <label>Dekanat</label>
+            </value>
+            <value>
+                <fullName>Laboratory</fullName>
+                <default>false</default>
+                <label>Laboratory</label>
+            </value>
+            <value>
+                <fullName>Service room</fullName>
+                <default>false</default>
+                <label>Service room</label>
+            </value>
+            <value>
+                <fullName>Sport room</fullName>
+                <default>false</default>
+                <label>Sport room</label>
+            </value>
+            <value>
+                <fullName>Study room</fullName>
+                <default>false</default>
+                <label>Study room</label>
+            </value>
+            <value>
+                <fullName>Teacher room</fullName>
+                <default>false</default>
+                <label>Teacher room</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
