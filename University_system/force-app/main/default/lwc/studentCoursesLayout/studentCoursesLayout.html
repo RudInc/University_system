@@ -1,0 +1,9 @@
+<template>
+   <lightning-layout>
+        <template for:each={studentCourses} for:item="record">
+            <lightning-layout-item key={record.Id} padding="around-small">            
+                <c-student-courses record={record}></c-student-courses>
+            </lightning-layout-item>
+        </template>
+   </lightning-layout> 
+</template>
