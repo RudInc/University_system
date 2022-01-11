@@ -1,0 +1,8 @@
+<template>
+    <template if:false={chosen}>
+        <c-student-search onadditionalinfo={additionalInfoHandler}></c-student-search>
+    </template>
+    <template if:true={chosen}>
+        <c-student-additional-info student={student} onclose={closeHandler}></c-student-additional-info>
+    </template>
+</template>

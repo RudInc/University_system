@@ -1,0 +1,15 @@
+<template>
+    <lightning-button variant="destructive" label="close" onclick={closeHandler}></lightning-button>
+    <p>Full name: {student.Full_Name__c}</p>
+    <p>Flow: {student.Flow__c}</p>
+    <p>Avarage Mark: {avgMark}</p>
+    <p>Grand: {student.Grand__c}</p>
+    <p>Phone number: {student.Phone_Number__c}</p>
+    <p>Email: {student.Email__c}</p>
+    <p>Co-Living: {student.Co_Living__c}</p>
+    <lightning-datatable
+            key-field="Id"
+            data={studentCourses}
+            columns={columns}>
+    </lightning-datatable>
+</template>

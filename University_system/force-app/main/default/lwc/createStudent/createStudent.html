@@ -1,0 +1,26 @@
+<template>
+    <div>
+        <lightning-input 
+                type="text" 
+                label="Enter student`s full name" 
+                value={student.fullName} 
+                onchange={changeFullNameHandler}></lightning-input>
+        <lightning-input 
+                type="email" 
+                label="Email" 
+                name="email" 
+                value={student.email}
+                onchange={changeEmailHandler}></lightning-input>
+        <lightning-input 
+                type="tel" 
+                label="Contact phone number"  
+                name ="phonrNumber" 
+                value={student.phoneNumber}
+                onchange={changePhoneNumberHandler}></lightning-input>
+        <lightning-button 
+                name="createButton" 
+                variant="brand" 
+                label="Create student" 
+                onclick={createStudentHandler}></lightning-button>
+   </div>
+</template>

@@ -1,0 +1,21 @@
+<template>
+    <lightning-input type="text" label="Enter Flow Name" onchange={setFlowNameHandler} disabled={chosen}></lightning-input>
+    <lightning-combobox
+            name="specialty"
+            label="Specialty"
+            value={specialty}
+            options={specialties}
+            onchange={chooseSpecialtyHandler}
+            disabled={chosen}></lightning-combobox>
+    <lightning-input type="date" name="startDate" label="Stats Date" onchange={setFlowStartDateHandler} disabled={chosen}></lightning-input>
+    <lightning-combobox 
+            name="format_of_ed"
+            label="Format of Education"
+            value={formatOfEd}
+            options={formatsOfEducation}
+            onchange={chooseFormatOfEdHandler}
+            disabled={chosen}></lightning-combobox>
+    <lightning-button variant="success" name="create" label="Create" onclick={createFlowHandler} disabled={chosen}></lightning-button>
+    <lightning-button variant="destructive" name="reject" label="Reject" onclick={rejectFlowHandler} ></lightning-button>
+   
+</template>

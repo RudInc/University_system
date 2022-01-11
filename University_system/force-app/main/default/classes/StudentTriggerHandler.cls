@@ -27,9 +27,9 @@ public with sharing class StudentTriggerHandler {
 
             for(Student__c student : students){
                 if(student.Specialty__c == course.Specialty__c){
-                    Course_Student__c test = new Course_Student__c(Name = student.Name + '_'+ course.Code__c,
+                    studentsCourses.add(new Course_Student__c(Name = student.Name + '_'+ course.Code__c,
                                                                    Student__c = student.Id,
-                                                                   Course__c = course.Id);
+                                                                   Course__c = course.Id));
                     
                 }
             }
