@@ -1,0 +1,22 @@
+<template>
+    <lightning-input type="text" 
+                     label="Enter Course`s Name" 
+                     onchange={changeNameHandler} 
+                     disabled={chosen}></lightning-input>
+    <lightning-button variant="success" 
+                      label="Search" 
+                      class="slds-m-left_x-small" 
+                      onclick={searchCourseHandler} 
+                      disabled={chosen}></lightning-button>
+    <lightning-layout multiple-rows="true">
+        <template for:each={courses} for:item="course">
+            <lightning-layout-item key={course.Id}>
+                <c-course-layout-item course={course} 
+                    onchoosecourse={chooseCourseHandler}
+                    onrejectcourse={rejectCourseHandler} 
+                    chosen={chosen} 
+                    chooseable="true"></c-course-layout-item>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

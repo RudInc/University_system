@@ -1,31 +1,23 @@
-import { LightningElement, wire } from 'lwc';
-import { getObjectInfo } from 'lightning/uiObjectInfoApi';
-import { getPicklistValues } from 'lightning/uiObjectInfoApi';
+import { LightningElement } from 'lwc';
 import getSpecialities from '@salesforce/apex/FlowController.getSpecialities';
-import FORMAT_OF_ED_OBJECT from '@salesforce/schema/Flow__c';
-import FORMAT_OF_ED_FIELD from '@salesforce/schema/Flow__c.Format_of_education__c';
+
 
 export default class CreateFlow extends LightningElement {
     flowName;
     specialty;
     startDate;
     specialties=[];
-    formatOfEd = "Full Time";
+    formatOfEd = "FullTime";
+    formatsOfEducation = [
+        {label: "FullTime", value: "FullTime"},
+        {label: "Distance", value: "Distance"}
+    ];
     chosen = false;
-    @wire(getObjectInfo,{
-        objectApiName: FORMAT_OF_ED_OBJECT
-    }) objectInfo;
-    @wire(getPicklistValues,{
-        recordTypeId: "$objectInfo.data.defaultRecordTypeId", 
-        fieldApiName: FORMAT_OF_ED_FIELD
-    }) formatsOfEducation; 
-
-    
     createFlowHandler(){
         this.chosen = true;
         const createFlowEvent = new CustomEvent("createflow",{
             detail : JSON.stringify({
-                flowName : this.flowName,
+                z : this.flowName,
                 specialty : JSON.parse(this.specialty).Id,
                 formatOfEd: this.formatOfEd,
                 startDate: this.startDate

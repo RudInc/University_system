@@ -1,0 +1,26 @@
+<template>
+    <lightning-input 
+        type="text" 
+        name="searchInput" 
+        label="Flow Name"
+        value={flowName} 
+        onchange={changeFlowNameHandler} 
+        disabled={chosen}></lightning-input>
+    <lightning-button 
+        variant="brand" 
+        name="searchButton"
+        label="Search" 
+        onclick={searchFlowHandler} 
+        disabled={chosen}></lightning-button>
+    <lightning-layout multiple-rows="true">
+        <template for:each={flows} for:item="flow">
+            <c-flow-layout-item 
+                key={flow.Id} 
+                chosen={chosen} 
+                chooseable="true"
+                flow={flow}
+                onchooseflow={chooseFlowHandler}
+                onrejectflow={rejectFlowHandler}></c-flow-layout-item>
+        </template>
+    </lightning-layout>
+</template>

@@ -1,0 +1,25 @@
+<template>
+    <lightning-input type="text" 
+        name="inputTeacherName" 
+        label="Teacher`s Name" 
+        value={teacherName} 
+        onchange={changeNameHandler}
+        disabled={chosen}></lightning-input>
+    <lightning-button 
+        name="search" 
+        variant="brand" 
+        label="Search" 
+        onclick={searchTeacherHandler}
+        disabled={chosen}></lightning-button>
+    <lightning-layout multiple-rows="true">
+        <template for:each={teachers} for:item="teacher">
+            <lightning-layout-item key={teacher.Id}>
+                <c-teacher-layout-item onchooseteacher={chooseTeacherHandler}
+                                       onrejectteacher={rejectTeacherHandler} 
+                                       teacher={teacher} 
+                                       chooseable = "true" 
+                                       chosen={chosen}></c-teacher-layout-item>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

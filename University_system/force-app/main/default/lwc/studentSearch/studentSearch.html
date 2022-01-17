@@ -1,7 +1,7 @@
 <template>
-    <lightning-input type="text" label="Enter Student`s Name" onchange={nameChangeHandler}></lightning-input>
+    <lightning-input type="text" label="Enter Student`s Name" onchange={changeNameHandler}></lightning-input>
     <lightning-button variant="success" label="Search" class="slds-m-left_x-small" onclick={searchStudentHandler}></lightning-button>
-    <lightning-layout>
+    <lightning-layout multiple-rows="true">
         <template for:each={students} for:item="student">
             <lightning-layout-item key={student.Id}>
                 <c-student-layout-item student={student} onadditionalinfo={additionalInfoHandler}></c-student-layout-item>

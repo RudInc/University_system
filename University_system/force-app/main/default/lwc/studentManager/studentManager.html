@@ -2,7 +2,8 @@
     
         <c-create-flow oncreateflow ={createFlowHandler}></c-create-flow>
         <c-create-student oncreatestudent={createStudentHandler}></c-create-student>
-        <lightning-button name="confirm" label="Confirm" onclick={confirmHandler}></lightning-button>
+        <lightning-button name="confirm" variant="success" label="Confirm" onclick={confirmHandler} ></lightning-button>
+        <lightning-button name="dropStudents" variant="destructive" label ="Drop students" onclick={dropStudentsHandler}></lightning-button>
         <lightning-datatable 
                 key-field="fullName"
                 columns={columns}

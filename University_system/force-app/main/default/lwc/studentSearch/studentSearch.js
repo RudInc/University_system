@@ -1,8 +1,8 @@
 import { LightningElement } from 'lwc';
 import searchStudent from '@salesforce/apex/StudentController.searchStudent';
 export default class StudentSearch extends LightningElement {
-    students = '';
-    studentName;
+    students = [];
+    studentName ='';
 
     searchStudentHandler(){
         searchStudent({studentName: '%'+this.studentName+'%'})
@@ -14,7 +14,7 @@ export default class StudentSearch extends LightningElement {
                 console.log("Search error:" + error);
             })
         }
-    nameChangeHandler(event){
+    changeNameHandler(event){
         this.studentName = event.detail.value; 
     }
     additionalInfoHandler(event){

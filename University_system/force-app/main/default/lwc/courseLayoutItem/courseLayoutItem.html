@@ -1,0 +1,21 @@
+<template>
+    <div>
+    <p>{course.Name}</p>
+        <template if:true={chooseable}>
+            <template if:false={chosen}>
+                <lightning-button 
+                    variant="brand" 
+                    name="chooseButton" 
+                    label="Choose" 
+                    onclick={chooseCourseHandler}></lightning-button>
+            </template>
+            <template if:true={chosen}>
+                <lightning-button 
+                    variant="destructive" 
+                    name="rejectButton" 
+                    label="Reject" 
+                    onclick={rejectCourseHandler}></lightning-button>
+            </template>
+        </template>
+    </div>
+</template>

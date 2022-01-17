@@ -1,0 +1,10 @@
+<template>
+    
+    <lightning-layout multiple-rows="true">
+        
+        <template for:each={courses} for:item="course">
+            <c-course-layout-item key={course.Id} course={course} chooseable="true" onchoosecourse={chooseCourseHandler}></c-course-layout-item>
+        </template>
+        
+    </lightning-layout>
+</template>

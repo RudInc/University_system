@@ -1,4 +1,5 @@
 import { LightningElement } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import createFlowWithStudents from '@salesforce/apex/FlowController.createFlowWithStudents';
 
 export default class StudentManager extends LightningElement {
@@ -10,7 +11,7 @@ export default class StudentManager extends LightningElement {
         { label: "Grand?", fieldName: "grand", type: "boolean"}
     ];
     studentsList=[];
-    selectedFlow;
+    selectedFlow = undefined;
 
 
     createStudentHandler(event){
@@ -24,7 +25,26 @@ export default class StudentManager extends LightningElement {
         this.selectedFlow = event.detail;
         console.log(this.selectedFlow);
     }
+    dropStudentsHandler(){
+        this.studentsList = [];
+    }
     confirmHandler(){
+        if(this.selectedFlow==undefined){
+            const flowError = new ShowToastEvent({
+                title:"Flow dont created",
+                variant: 'error'
+            });
+            this.dispatchEvent(flowError);
+            return;
+        }
+        if(this.studentsList.length==0){
+            const studError = new ShowToastEvent({
+                title:"Students dont created",
+                variant: 'error'
+            });
+            this.dispatchEvent(studError);
+            return;
+        }
         createFlowWithStudents({
             flow :  this.selectedFlow,
             students : JSON.stringify(this.studentsList)

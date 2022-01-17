@@ -1,0 +1,19 @@
+<template>
+    <div>
+    <lightning-layout-item>
+        <p>{flowCourse}</p>
+        <template if:false={chooseable}>
+            <lightning-button
+                name="chooseButton" 
+                label="choose" 
+                onclick={chooseFlowCourseHandler}></lightning-button>
+        </template>
+        <template if:true={chooseable}>
+            <lightning-button
+                name="rejectButton" 
+                label="reject" 
+                onclick={rejectFlowCourseHandler}></lightning-button>
+        </template>
+    </lightning-layout-item>
+    </div>
+</template>

@@ -1,0 +1,9 @@
+<template>
+    <c-search-teacher onchooseteacher={chooseTeacherHandler} onrejectteacher={rejectTeacherHandler}></c-search-teacher>
+    <c-search-flow onchooseflow={chooseFlowHandler} onrejectflow={rejectFlowHandler}></c-search-flow>
+    <c-search-course onchoosecourse={chooseCourseHandler} onrejectcourse={rejectCourseHandler}></c-search-course>
+    <p>Chosen flow: {chosenFlow}</p>
+    <c-search-flow-courses onchoosecourse={chooseCourseToBind}></c-search-flow-courses>
+
+    <lightning-button variant="success" label="Add teacher to course" name="bindButton" onclick={bindTeacherToCourseHandler}></lightning-button>
+</template>

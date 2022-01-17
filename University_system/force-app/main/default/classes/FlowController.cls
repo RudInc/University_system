@@ -3,6 +3,14 @@ public with sharing class FlowController {
 
     }
     @AuraEnabled
+    public static List<Flow__c> searchFlow(String flowName){
+        try {
+            return UniversityDAO.searchFlow(flowName);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+    @AuraEnabled
     public static List<Specialty__c> getSpecialities(){
         try {
             return UniversityDAO.getSpecialities();
@@ -37,13 +45,43 @@ public with sharing class FlowController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+    @AuraEnabled
+    public static List<Course__c> searchFlowCourses(String flowString){
+        try {
+            system.debug(flowString);
+            Flow__c wrappedFlow = (Flow__c)JSON.deserialize(flowString, Flow__c.class);
+            system.debug(wrappedFlow);
+            /*
+            return UniversityDAO.searchFlowCourses(new Flow__c(Id = wrappedFlow.flowId,
+                                                               Name = wrappedFlow.flowName,
+                                                               Specialty__c = wrappedFlow.specialty,
+                                                               Start_Date__c = wrappedFlow.startDate,
+                                                               Format_of_education__c = wrappedFlow.formatOfEd));
+            */
+            return UniversityDAO.searchFlowCourses(wrappedFlow);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 
 
     public class FlowWrapper{
+        public Id flowId {get;set;}
         public String flowName {get; set;}
         public Id specialty {get;set;}
         public Date startDate {get;set;}
         public String formatOfEd {get;set;}
+        
+        public List<Flow__c> unwrapFlow(List<FlowWrapper> wrappedFlowList){
+            List<Flow__c> unwrappedFlows = new List<Flow__c>();
+            for(FlowWrapper wrappedFlow : wrappedFlowList){
+                unwrappedFlows.add(new Flow__c(Specialty__c = wrappedFlow.specialty,
+                                               Start_Date__c = wrappedFlow.startDate,
+                                               Format_of_education__c = wrappedFlow.formatOfEd,
+                                               Name = wrappedFlow.flowName));
+            }
+            return unwrappedFlows;
+        }
     }
     public class StudentWrapper{
         public String fullName {get;set;}
