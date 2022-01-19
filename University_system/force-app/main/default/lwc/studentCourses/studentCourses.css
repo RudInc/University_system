@@ -1,0 +1,14 @@
+/* studentCourses.css */ 
+div {
+    width: 75px; 
+    height: 75px;
+}
+.color_red {
+    background-color: red;
+}
+.color_yellow {
+    background-color: yellow;
+}
+.color_green{
+    background-color: green;
+}

@@ -2,17 +2,18 @@ import { LightningElement, api} from 'lwc';
 
 export default class StudentCourses extends LightningElement {
     @api record;
-    color="width: 100px height: 100px ";
-    connectedCallback(){
-        if(this.record.Mark__c < 64){
-            this.color =+"background-color: red"
+    
+    get color(){
+        console.log(this.record.Mark__c);
+        if(this.record.Mark__c < 64||this.record.Mark__c == undefined){
+            return "color_red";
         } 
         else if(this.record.Mark__c >= 64 &&this.record.Mark__c < 90)
         {
-            this.color =+"background-color: yellow";
+            return "color_yellow";
         }
         else if(this.record.Mark__c >= 90){
-            this.color =+"background-color: green";
+            return "color_green";
         }
     }
     
