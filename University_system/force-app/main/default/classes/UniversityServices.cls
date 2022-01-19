@@ -48,7 +48,11 @@ public with sharing class UniversityServices {
         return Database.update(coursesToBind, false);
     } 
     //bind teacher to course
-    public static Database.UpsertResult bindTeacherToCourse(Id teacherId, Id courseId){
-        return Database.upsert(new Course_Teacher__c(Course__c = courseId, Teacher__c = teacherId));
+    public static List<Database.UpsertResult> bindTeacherToCourse(Id teacherId, Set<Id> coursesId){
+        List<Course_Teacher__c> courseTeachers = new List<Course_Teacher__c>();
+        for(Id courseId : coursesId){
+            courseTeachers.add(new Course_Teacher__c(Course__c = courseId, Teacher__c = teacherId));
+        }
+        return Database.upsert(courseTeachers);
     }   
 }
